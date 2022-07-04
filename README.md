@@ -1,2 +1,2 @@
-# -ios-sdk-ogury-adapter
+# ios-sdk-ogury-adapter
  iOS SDK Ogury Adapter
