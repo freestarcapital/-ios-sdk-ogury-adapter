@@ -12,6 +12,7 @@
 @interface OguryBannerMediator () <GADBannerViewDelegate, FSTRMediatorEnabling>
 
 @property GAMBannerView *ad;
+@property (nonatomic, strong) OguryBannerAd *ad;
 @property GADAdSize requestedSize;
 @property(nonatomic, assign) FreestarBannerAdSize freestarAdSize;
 @property CGFloat requestedWidth;
@@ -42,41 +43,15 @@
     return [Freestar adaptiveBannerEnabled];
 }
 
-- (BOOL)determineSizeIsAdaptive:(GADAdSize)adSize {
-    return ([self isAdaptiveEnabled]
-            && self.freestarAdSize == FreestarBanner320x50)
-            && (adSize.size.width != 320 || adSize.size.height != 50);
-}
-
 -(void)loadBannerAd {
-    [self loadInlineInviewAd];
-}
 
-- (void)loadInlineInviewAd {
-    GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers =
-        @[GADSimulatorID, @"2077ef9a63d2b398840261c8221a0c9a"];
-    
-    self.ad = [[GAMBannerView alloc] initWithAdSize:self.requestedSize];
-    if ([self isAdaptiveEnabled]
-        && [self determineSizeIsAdaptive:self.ad.adSize]) {
-        // GAM supports multi-size requests
-        self.ad.validAdSizes = @[NSValueFromGADAdSize(self.requestedSize), NSValueFromGADAdSize(GADAdSizeBanner)];
-    }
-        
-    self.ad.adUnitID = [self.mPartner adunitId];    
-    self.ad.rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-    
-    if ([[FreestarInternal privacySettings] coppaApplies]) {
-        [GADMobileAds.sharedInstance.requestConfiguration tagForChildDirectedTreatment:YES];
-    }
-    
+    self.ad = [[OguryBannerAd alloc] initWithAdUnitId:@"AD_UNIT_ID"];
+
+    [self.ad loadWithSize:[OguryAdsBannerSize small_banner_320x50]];
+
+//    [self.ad loadWithSize:OguryAdsBannerSize];
+
     self.ad.delegate = self;
-    
-    GAMRequest *request = [[GAMRequest alloc] init];
-    if (self.customTargeting) {
-        request.customTargeting = self.customTargeting;
-    }
-    [self.ad loadRequest:request];
 }
 
 
@@ -86,10 +61,18 @@
     if (self.ad) {
         // Place the ad view onto the screen.
         [self.container placeAdContent:self.ad];
+
+//        [yourView addSubview:bannerAd];
     }
 }
 
 #pragma mark - GADBannerViewDelegate
+
+- (void)didLoadOguryBannerAd:(OguryBannerAd *)banner {
+    [self.view addSubview:banner];
+
+    [self partnerAdLoaded];
+}
 
 /// Tells the delegate an ad request loaded an ad.
 - (void)bannerViewDidReceiveAd:(GADBannerView *)adView {

@@ -1,0 +1,6 @@
+framework module Pods_FreestarAds_Ogury {
+  umbrella header "Pods-FreestarAds-Ogury-umbrella.h"
+
+  export *
+  module * { export * }
+}
