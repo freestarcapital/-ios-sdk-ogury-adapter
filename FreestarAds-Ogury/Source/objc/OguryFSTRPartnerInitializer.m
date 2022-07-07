@@ -6,6 +6,9 @@
 //
 
 #import "OguryFSTRPartnerInitializer.h"
+#import <OgurySdk/Ogury.h>
+#import <OguryAds/OguryAds.h>
+#import <OguryChoiceManager/OguryChoiceManager.h>
 
 @implementation OguryFSTRPartnerInitializer
 
@@ -21,18 +24,8 @@
 - (void)runInitialization {
     // run partner initialization here
     FSTRLog(@"OGURY: Partner initialization.");
-
     OguryConfigurationBuilder *configurationBuilder = [[OguryConfigurationBuilder alloc] initWithAssetKey:@"OGY-773308830772"];
-        [Ogury startWithConfiguration:[configurationBuilder build]];
-//    NSError *error = [[NSError alloc] initWithDomain:@"com.ogury.native.error"
-//                                                code:1
-//                                            userInfo:@{ NSLocalizedDescriptionKey : @"Ogury partner failed to initialize."}];
-    NSError *error = nil;
-    if (error) {
-        [self.delegate sdkInitialization:self completed:NO];
-    } else {
-        [self.delegate sdkInitialization:self completed:YES];
-    }
+    [Ogury startWithConfiguration:[configurationBuilder build]];
 }
 
 @end

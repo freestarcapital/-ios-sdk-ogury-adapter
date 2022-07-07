@@ -7,32 +7,30 @@
 
 #import "OguryBannerMediator.h"
 #import <FreestarAds/FreestarAds.h>
-#import <MobileAds/GoogleMobileAds.h>
+#import <UIKit/UIKit.h>
+#import <OgurySdk/Ogury.h>
+#import <OguryAds/OguryAds.h>
+#import <OguryChoiceManager/OguryChoiceManager.h>
 
-@interface OguryBannerMediator () <GADBannerViewDelegate, FSTRMediatorEnabling>
+@interface OguryBannerMediator()<OguryBannerAdDelegate, FSTRMediatorEnabling>
 
-@property GAMBannerView *ad;
 @property (nonatomic, strong) OguryBannerAd *ad;
-@property GADAdSize requestedSize;
-@property(nonatomic, assign) FreestarBannerAdSize freestarAdSize;
+@property OguryAdsBannerSize *requestedSize;
 @property CGFloat requestedWidth;
+@property(nonatomic, assign) FreestarBannerAdSize freestarAdSize;
+
 
 @end
 
-@implementation GoogleBannerMediator
+@implementation OguryBannerMediator
 
 - (BOOL)isEnabledForMediatorFormat:(FSTRMediatorFormatType)type {
     switch (type) {
         case FSTRMediatorFormatTypeBanner:
-        case FSTRMediatorFormatTypeInline:        
             return YES;
         default:
             return NO;
     }
-}
-
-- (BOOL)canShowInlineInviewAd {
-    return YES;
 }
 
 - (BOOL)canShowBannerAd {
@@ -43,111 +41,78 @@
     return [Freestar adaptiveBannerEnabled];
 }
 
--(void)loadBannerAd {
-
-    self.ad = [[OguryBannerAd alloc] initWithAdUnitId:@"AD_UNIT_ID"];
-
-    [self.ad loadWithSize:[OguryAdsBannerSize small_banner_320x50]];
-
-//    [self.ad loadWithSize:OguryAdsBannerSize];
-
-    self.ad.delegate = self;
+- (NSString*)placementId {
+    return self.mPartner.placement_id;
 }
 
+-(void)loadBannerAd {
+    FSTRLog(@"OGURY: loadBannerAd");
+
+    self.ad = [[OguryBannerAd alloc] initWithAdUnitId:[self placementId]];
+    [self.ad loadWithSize:self.requestedSize];
+    self.ad.delegate = self;
+}
 
 #pragma mark - showing
 
 - (void)showAd {
     if (self.ad) {
+        FSTRLog(@"OGURY: showAd - placeAdContent");
         // Place the ad view onto the screen.
         [self.container placeAdContent:self.ad];
-
-//        [yourView addSubview:bannerAd];
     }
 }
 
-#pragma mark - GADBannerViewDelegate
+#pragma mark - OguryBannerAdDelegate
 
 - (void)didLoadOguryBannerAd:(OguryBannerAd *)banner {
-    [self.view addSubview:banner];
+    FSTRLog(@"OGURY: didLoadOguryBannerAd");
 
+    self.ad = banner;
     [self partnerAdLoaded];
 }
 
-/// Tells the delegate an ad request loaded an ad.
-- (void)bannerViewDidReceiveAd:(GADBannerView *)adView {
-    FSTRLog(@"adViewDidReceiveAd");
-    [self partnerAdLoaded];
+- (void)didClickOguryBannerAd:(OguryBannerAd *)banner {
+    FSTRLog(@"OGURY: didClickOguryBannerAd");
+    [self partnerAdClicked];
+}
+- (void)didCloseOguryBannerAd:(OguryBannerAd *)banner {
+    FSTRLog(@"OGURY: didCloseOguryBannerAd");
 }
 
-/// Tells the delegate an ad request failed.
-- (void)bannerView:(GADBannerView *)adView didFailToReceiveAdWithError:(NSError *)error {
-    FSTRLog(@"adView:didFailToReceiveAdWithError: %@", [error localizedDescription]);
-    
+- (void)didDisplayOguryBannerAd:(OguryBannerAd *)banner {
+    FSTRLog(@"OGURY: didDisplayOguryBannerAd");
+
+    [self partnerAdShown];
+}
+
+- (void)didFailOguryBannerAdWithError:(OguryError *)error forAd:(OguryBannerAd *)banner {
+    FSTRLog(@"OGURY: didFailOguryBannerAdWithError %@", [error localizedDescription]);
+
    [self partnerAdLoadFailed:[NSString stringWithFormat:@"%ld", (long)error.code]];
 }
 
-/// Tells the delegate that a full-screen view will be presented in response
-/// to the user clicking on an ad.
-- (void)bannerViewWillPresentScreen:(GADBannerView *)adView {
-    FSTRLog(@"adViewWillPresentScreen");
-    [self partnerAdClicked];
+- (void)didTriggerImpressionOguryBannerAd:(OguryBannerAd *)banner {
+    FSTRLog(@"OGURY: didTriggerImpressionOguryBannerAd");
 }
 
-/// Tells the delegate that the full-screen view will be dismissed.
-- (void)bannerViewWillDismissScreen:(GADBannerView *)adView {
-    FSTRLog(@"adViewWillDismissScreen");
+- (UIViewController *)presentingViewControllerForOguryAdsBannerAd:(OguryBannerAd*)banner {
+    return nil;
 }
 
-/// Tells the delegate that the full-screen view has been dismissed.
-- (void)bannerViewDidDismissScreen:(GADBannerView *)adView {
-    FSTRLog(@"adViewDidDismissScreen");
-}
-
-/// Tells the delegate that a user click will open another app (such as
-/// the App Store), backgrounding the current app.
-- (void)bannerViewWillLeaveApplication:(GADBannerView *)adView {
-    FSTRLog(@"adViewWillLeaveApplication");
-}
-
--(BOOL)supportsBanner:(FreestarBannerAdSize)adSize {
+#pragma mark - Helper Mediator Functions
+- (BOOL)supportsBanner:(FreestarBannerAdSize)adSize {
     self.freestarAdSize = adSize;
     switch(adSize){
         case FreestarBanner320x50:
-            if ([self isAdaptiveEnabled]) {
-                self.requestedSize =
-                    GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(self.requestedWidth);
-            } else {
-                self.requestedSize = GADAdSizeBanner;
-            }
+            self.requestedSize = [OguryAdsBannerSize small_banner_320x50];
             return YES;
         case FreestarBanner300x250:
-            self.requestedSize = GADAdSizeMediumRectangle;
+            self.requestedSize = [OguryAdsBannerSize mpu_300x250];
             return YES;
         case FreestarBanner728x90:
-            self.requestedSize = GADAdSizeLeaderboard;
-            return YES;
         default:
             return NO;
-    }
-}
-
--(void)setAdjustableBannerWidth:(CGFloat)width {
-    //default to screenwide ads
-    self.requestedWidth = (width && width != 0.0) ? width : UIApplication.sharedApplication.keyWindow.bounds.size.width;
-}
-
-- (void)didChangeMediatorStatus:(FSTRMediatorStatus)newStatus {
-    switch (newStatus) {
-        case FSTRMediatorStatusAuctionWinner:
-            if ([self determineSizeIsAdaptive:self.ad.adSize]) {
-                // banner creative is adaptive
-                [self setAdaptiveBanner:YES];
-            }
-            break;
-        case FSTRMediatorStatusInitial:
-        default:
-            break;
     }
 }
 
