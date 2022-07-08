@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                = "FreestarAds-Ogury"
-  spec.version             = "1.0.0.0-beta-1"
+  spec.version             = "1.0.0-beta-1"
   spec.author              = 'Freestar'
   spec.license             =  { :type => 'Apache2.0', :file => 'LICENSE' }
   spec.homepage            = 'http://www.freestar.com'
@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
 
   spec.source              = {
       :git => "https://gitlab.com/freestar/ios-binaries.git",
-      :tag => "Ogury-PreRelease-1.0.0.0-beta-1"
+      :tag => "Ogury-PreRelease-1.0.0-beta-1"
   }
 
   spec.pod_target_xcconfig = {
