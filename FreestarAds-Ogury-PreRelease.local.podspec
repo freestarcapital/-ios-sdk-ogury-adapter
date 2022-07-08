@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
 
   spec.vendored_frameworks  = 'build/FreestarAds-Ogury.xcframework'
   spec.dependency "FreestarAds-PreRelease", "~> 5.12-beta"
-  spec.dependency 'OgurySdk', '~> 1.2.0'
+  spec.dependency 'OgurySdk', '~> 2.1.0'
 
   spec.source = { :git => '' }
 

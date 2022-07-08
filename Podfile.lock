@@ -21,7 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - FreestarAds-PreRelease (~> 5.12-beta)
-  - OgurySdk
+  - OgurySdk (~> 2.1.0)
 
 SPEC REPOS:
   trunk:
@@ -38,6 +38,6 @@ SPEC CHECKSUMS:
   OguryCore: 51a06f5bffc34f94d6a8c1ed88e646acbbc59a63
   OgurySdk: 86b949726a3a0cf4f7324158f6928abbffd2599d
 
-PODFILE CHECKSUM: 6ac4ef2be357d467c998e82934ec2752a2bf66ce
+PODFILE CHECKSUM: 3e280b2b20a275a3b49cb42058b595377f4d706b
 
 COCOAPODS: 1.11.3
