@@ -20,7 +20,6 @@
 @implementation OguryInterstitialMediator
 
 - (void)resetInterstitialAd {
-    [self resetInterstitialAd];
     self.interstitialAd = nil;
 }
 
