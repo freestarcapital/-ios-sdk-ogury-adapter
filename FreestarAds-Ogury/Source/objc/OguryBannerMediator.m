@@ -27,6 +27,7 @@
 - (BOOL)isEnabledForMediatorFormat:(FSTRMediatorFormatType)type {
     switch (type) {
         case FSTRMediatorFormatTypeBanner:
+        case FSTRMediatorFormatTypeInline:
             return YES;
         default:
             return NO;
@@ -97,7 +98,8 @@
 }
 
 - (UIViewController *)presentingViewControllerForOguryAdsBannerAd:(OguryBannerAd*)banner {
-    return nil;
+    FSTRLog(@"OGURY: presentingViewControllerForOguryAdsBannerAd");
+    return self.presenter;
 }
 
 #pragma mark - Helper Mediator Functions
