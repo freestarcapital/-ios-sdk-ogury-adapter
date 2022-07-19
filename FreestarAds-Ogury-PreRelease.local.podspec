@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                = "FreestarAds-Ogury-PreRelease"
-  spec.version             = "2.1.0.0-beta-1"
+  spec.version             = "2.1.0.1-beta-2"
   spec.author              = 'Freestar'
   spec.license             =  { :type => 'Apache2.0', :file => 'LICENSE' }
   spec.homepage            = 'http://www.freestar.com'
