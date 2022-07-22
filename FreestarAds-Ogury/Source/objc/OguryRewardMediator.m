@@ -11,9 +11,9 @@
 #import <UIKit/UIKit.h>
 #import <OguryChoiceManager/OguryChoiceManager.h>
 
-@interface OguryRewardMediator() <OguryRewardAdDelegate, FSTRMediatorEnabling>
+@interface OguryRewardMediator() <OguryOptinVideoAdDelegate>
 
-@property (nonatomic, strong) OguryRewardAd *rewardAd;
+@property (nonatomic, strong) OguryOptinVideoAd *optinVideoAd;
 
 @end
 
@@ -51,7 +51,7 @@
     }
 }
 
-#pragma mark - OguryRewardAdDelegate
+#pragma mark - OguryOptinVideoAdDelegate
 
 - (void)didLoadOguryRewardAd:(OguryRewardAd *)reward {
     FSTRLog(@"OGURY: didLoadOguryRewardAd");
