@@ -13,14 +13,14 @@
 
 @interface OguryInterstitialMediator()<OguryInterstitialAdDelegate, FSTRMediatorEnabling>
 
-@property (nonatomic, strong) OguryInterstitialAd *interstitialAd;
+@property (nonatomic, strong) OguryInterstitialAd *ad;
 
 @end
 
 @implementation OguryInterstitialMediator
 
 - (void)resetInterstitialAd {
-    self.interstitialAd = nil;
+    self.ad = nil;
 }
 
 - (BOOL)canShowInterstitialAd {
@@ -35,17 +35,17 @@
     FSTRLog(@"OGURY: loadInterstitialAd");
     [self resetInterstitialAd];
 
-    self.interstitialAd = [[OguryInterstitialAd alloc] initWithAdUnitId:[self placementId]];
-    [self.interstitialAd load];
-    self.interstitialAd.delegate = self;
+    self.ad = [[OguryInterstitialAd alloc] initWithAdUnitId:[self placementId]];
+    [self.ad load];
+    self.ad.delegate = self;
 }
 
 #pragma mark - showing
 
 - (void)showAd {
-    if ([self.interstitialAd isLoaded]) {
+    if ([self.ad isLoaded]) {
         FSTRLog(@"OGURY: showAd");
-        [self.interstitialAd showAdInViewController:self.presenter];
+        [self.ad showAdInViewController:self.presenter];
     } else {
         [self partnerAdShowFailed:@"OGURY: No interstitial ad available to show."];
     }

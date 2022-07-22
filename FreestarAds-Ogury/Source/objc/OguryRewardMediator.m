@@ -8,19 +8,19 @@
 #import "OguryRewardMediator.h"
 #import <OgurySdk/Ogury.h>
 #import <OguryAds/OguryAds.h>
-#import <UIKit/UIKit.h>
 #import <OguryChoiceManager/OguryChoiceManager.h>
+#import <UIKit/UIKit.h>
 
 @interface OguryRewardMediator() <OguryOptinVideoAdDelegate>
 
-@property (nonatomic, strong) OguryOptinVideoAd *optinVideoAd;
+@property (nonatomic, strong) OguryOptinVideoAd *ad;
 
 @end
 
 @implementation OguryRewardMediator
 
 - (void)resetRewardAd {
-    self.rewardAd = nil;
+    self.ad = nil;
 }
 
 - (BOOL)canShowRewardAd {
@@ -35,17 +35,17 @@
     FSTRLog(@"OGURY: loadRewardAd");
     [self resetRewardAd];
 
-    self.rewardAd = [[OguryRewardAd alloc] initWithAdUnitId:[self placementId]];
-    [self.rewardAd load];
-    self.rewardAd.delegate = self;
+    self.ad = [[OguryOptinVideoAd alloc] initWithAdUnitId:[self placementId]];
+    [self.ad load];
+    self.ad.delegate = self;
 }
 
 #pragma mark - showing
 
 - (void)showAd {
-    if ([self.rewardAd isLoaded]) {
+    if ([self.ad isLoaded]) {
         FSTRLog(@"OGURY: showAd");
-        [self.rewardAd showAdInViewController:self.presenter];
+        [self.ad showAdInViewController:self.presenter];
     } else {
         [self partnerAdShowFailed:@"OGURY: No reward ad available to show."];
     }
@@ -53,34 +53,34 @@
 
 #pragma mark - OguryOptinVideoAdDelegate
 
-- (void)didLoadOguryRewardAd:(OguryRewardAd *)reward {
+- (void)didLoadOguryRewardAd:(OguryOptinVideoAd *)reward {
     FSTRLog(@"OGURY: didLoadOguryRewardAd");
     [self partnerAdLoaded];
 }
 
-- (void)didClickOguryRewardAd:(OguryRewardAd *)reward {
+- (void)didClickOguryRewardAd:(OguryOptinVideoAd *)optinVideo {
     FSTRLog(@"OGURY: didClickOguryRewardAd");
     [self partnerAdClicked];
 }
-- (void)didCloseOguryRewardAd:(OguryRewardAd *)reward {
+- (void)didCloseOguryRewardAd:(OguryOptinVideoAd *)optinVideo {
     FSTRLog(@"OGURY: didCloseOguryRewardAd");
 }
 
-- (void)didDisplayOguryRewardAd:(OguryRewardAd *)reward {
+- (void)didDisplayOguryRewardAd:(OguryOptinVideoAd *)optinVideo {
     FSTRLog(@"OGURY: didDisplayOguryRewardAd");
     [self partnerAdShown];
 }
 
-- (void)didFailOguryRewardAdWithError:(OguryError *)error forAd:(OguryRewardAd *)reward {
+- (void)didFailOguryRewardAdWithError:(OguryError *)error forAd:(OguryOptinVideoAd *)optinVideo {
     FSTRLog(@"OGURY: didFailOguryRewardAdWithError %@", [error localizedDescription]);
     [self partnerAdLoadFailed:[NSString stringWithFormat:@"%ld", (long)error.code]];
 }
 
-- (void)didTriggerImpressionOguryRewardAd:(OguryRewardAd *)reward {
+- (void)didTriggerImpressionOguryRewardAd:(OguryOptinVideoAd *)optinVideo {
     FSTRLog(@"OGURY: didTriggerImpressionOguryRewardAd");
 }
 
-- (UIViewController *)presentingViewControllerForOguryAdsRewardAd:(OguryRewardAd*)reward {
+- (UIViewController *)presentingViewControllerForOguryAdsRewardAd:(OguryOptinVideoAd*)optinVideo {
     return self.presenter;
 }
 
