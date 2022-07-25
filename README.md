@@ -1,2 +1,2 @@
 # ios-sdk-ogury-adapter
-FreestarAds SDK demand adapter template for Ogury demand partner
+FreestarAds SDK demand adapter for Ogury partner
