@@ -49,11 +49,7 @@
 -(void)loadBannerAd {
     FSTRLog(@"OGURY: loadBannerAd");
 
-    self.ad = [[OguryBannerAd alloc] initWithAdUnitId:@"362bf1e0-ea77-013a-046c-5deb9a6c1557_test"];
- //2db93cd0-ea77-013a-8fc2-45ae87836070_test"];
-    //[self placementId]];
-
-    NSLog(@"self.requestedSize", self.requestedSize);
+    self.ad = [[OguryBannerAd alloc] initWithAdUnitId:[self placementId]];
     [self.ad loadWithSize:self.requestedSize];
     self.ad.delegate = self;
 }

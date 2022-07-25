@@ -25,7 +25,8 @@
     // run partner initialization here
     FSTRLog(@"OGURY: Partner initialization.");
 
-    OguryConfigurationBuilder *configurationBuilder = [[OguryConfigurationBuilder alloc] initWithAssetKey:@"OGY-374D2BA758F4"];//@"OGY-773308830772";
+    //NOTE: this key => @"OGY-773308830772" does not work
+    OguryConfigurationBuilder *configurationBuilder = [[OguryConfigurationBuilder alloc] initWithAssetKey:@"OGY-374D2BA758F4"];
     [Ogury startWithConfiguration:[configurationBuilder build]];
 
     [self.delegate sdkInitialization:self completed:YES];
