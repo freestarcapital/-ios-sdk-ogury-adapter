@@ -19,7 +19,6 @@
 @property CGFloat requestedWidth;
 @property(nonatomic, assign) FreestarBannerAdSize freestarAdSize;
 
-
 @end
 
 @implementation OguryBannerMediator
@@ -38,18 +37,25 @@
     return YES;
 }
 
+- (BOOL)canShowInlineInviewAd {
+    return YES;
+}
+
 - (BOOL)isAdaptiveEnabled {
     return [Freestar adaptiveBannerEnabled];
 }
 
-- (NSString*)placementId {
-    return self.mPartner.placement_id;
+-(void)loadBannerAd {
+    [self loadInlineInviewAd];
 }
 
--(void)loadBannerAd {
+- (void)loadInlineInviewAd {
     FSTRLog(@"OGURY: loadBannerAd");
 
-    self.ad = [[OguryBannerAd alloc] initWithAdUnitId:[self placementId]];
+    FSTRLog(@"OGURY: placement_id %@", self.mPartner.placement_id);
+    FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
+
+    self.ad = [[OguryBannerAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     [self.ad loadWithSize:self.requestedSize];
     self.ad.delegate = self;
 }
