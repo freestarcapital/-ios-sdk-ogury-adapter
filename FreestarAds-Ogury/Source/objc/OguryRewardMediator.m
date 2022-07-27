@@ -27,17 +27,16 @@
     return YES;
 }
 
-- (NSString*)placementId {
-    return self.mPartner.placement_id;
-}
-
 - (void)loadRewardAd {
     FSTRLog(@"OGURY: loadRewardAd");
     [self resetRewardAd];
 
-    self.ad = [[OguryOptinVideoAd alloc] initWithAdUnitId:[self placementId]];
-    [self.ad load];
+    FSTRLog(@"OGURY: placement_id %@", self.mPartner.placement_id);
+    FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
+
+    self.ad = [[OguryOptinVideoAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     self.ad.delegate = self;
+    [self.ad load];
 }
 
 #pragma mark - showing

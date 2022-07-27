@@ -27,17 +27,16 @@
     return YES;
 }
 
-- (NSString*)placementId {
-    return self.mPartner.placement_id;
-}
-
 - (void)loadInterstitialAd {
     FSTRLog(@"OGURY: loadInterstitialAd");
     [self resetInterstitialAd];
 
-    self.ad = [[OguryInterstitialAd alloc] initWithAdUnitId:[self placementId]];
-    [self.ad load];
+    FSTRLog(@"OGURY: placement_id %@", self.mPartner.placement_id);
+    FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
+
+    self.ad = [[OguryInterstitialAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     self.ad.delegate = self;
+    [self.ad load];
 }
 
 #pragma mark - showing
