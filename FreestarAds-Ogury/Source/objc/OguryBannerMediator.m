@@ -56,8 +56,8 @@
     FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
 
     self.ad = [[OguryBannerAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
-    [self.ad loadWithSize:self.requestedSize];
     self.ad.delegate = self;
+    [self.ad loadWithSize:self.requestedSize];
 }
 
 #pragma mark - showing
