@@ -34,6 +34,11 @@
     FSTRLog(@"OGURY: placement_id %@", self.mPartner.placement_id);
     FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
 
+    if ([self.mPartner adunitId] == nil) {
+        [self partnerAdLoadFailed:@"adunitId is nil"];
+        return;
+    }
+
     self.ad = [[OguryOptinVideoAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     self.ad.delegate = self;
     [self.ad load];
@@ -63,6 +68,7 @@
 }
 - (void)didCloseOguryRewardAd:(OguryOptinVideoAd *)optinVideo {
     FSTRLog(@"OGURY: didCloseOguryRewardAd");
+    [self partnerAdDone];
 }
 
 - (void)didDisplayOguryRewardAd:(OguryOptinVideoAd *)optinVideo {

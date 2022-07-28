@@ -28,11 +28,15 @@
 }
 
 - (void)loadInterstitialAd {
-    FSTRLog(@"OGURY: loadInterstitialAd");
     [self resetInterstitialAd];
 
-    FSTRLog(@"OGURY: placement_id %@", self.mPartner.placement_id);
+    FSTRLog(@"OGURY: loadInterstitialAd");
     FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
+
+    if ([self.mPartner adunitId] == nil) {
+        [self partnerAdLoadFailed:@"adunitId is nil"];
+        return;
+    }
 
     self.ad = [[OguryInterstitialAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     self.ad.delegate = self;
@@ -63,6 +67,7 @@
 }
 - (void)didCloseOguryInterstitialAd:(OguryInterstitialAd *)interstitial {
     FSTRLog(@"OGURY: didCloseOguryInterstitialAd");
+    [self partnerAdDone];
 }
 
 - (void)didDisplayOguryInterstitialAd:(OguryInterstitialAd *)interstitial {
