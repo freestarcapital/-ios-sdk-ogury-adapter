@@ -57,80 +57,46 @@
 #pragma mark - OguryOptinVideoAdDelegate
 
 - (void)didLoadOguryOptinVideoAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-    // implement your callback
+    FSTRLog(@"OGURY: didLoadOguryOptinVideoAd");
+    [self partnerAdLoaded];
 }
 
 - (void)didDisplayOguryOptinVideoAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-    // implement your callback
+    FSTRLog(@"OGURY: didDisplayOguryOptinVideoAd");
 }
 
 - (void)didClickOguryOptinVideoAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-    // implement your callback
+    FSTRLog(@"OGURY: didClickOguryOptinVideoAd");
+    [self partnerAdClicked];
 }
 
 - (void)didCloseOguryOptinVideoAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-    // implement your callback
+    FSTRLog(@"OGURY: didCloseOguryOptinVideoAd");
+    [self partnerAdDone];
 }
 
 - (void)didFailOguryOptinVideoAdWithError:(OguryError *)error
                                     forAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-    // implement your callback
+    FSTRLog(@"OGURY: didFailOguryOptinVideoAdWithError %@", [error localizedDescription]);
+    [self partnerAdLoadFailed:[NSString stringWithFormat:@"%ld", (long)error.code]];
 }
 
 - (void)didTriggerImpressionOguryOptinVideoAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-    // implement your callback
+    FSTRLog(@"OGURY: didTriggerImpressionOguryOptinVideoAd");
 }
 
 - (void)didRewardOguryOptinVideoAdWithItem:(OGARewardItem *)item forAd:(OguryOptinVideoAd *)optinVideo {
     // Reward the user here
     FSTRLog(@"OGURY: didRewardOguryOptinVideoAdWithItem");
-    FSTRLog(@"OGURY: optinVideo: ", optinVideo);
     FSTRLog(@"OGURY: rewardName: ", item.rewardName);
     FSTRLog(@"OGURY: rewardValue: ", item.rewardValue);
 
-    // potential crash issue
+    if (item.rewardName == nil || item.rewardValue == nil) {
+        FSTRLog(@"OGURY: Error invalid reward item");
+        return;
+    }
+
     [self partnerAdFinished:@[item.rewardName, item.rewardValue]];
-    FSTRLog(@"");
-}
-
-#pragma mark - OguryOptinVideoAdDelegate - DEPRECATED???
-
-- (void)didLoadOguryRewardAd:(OguryOptinVideoAd *)reward {
-    FSTRLog(@"OGURY: didLoadOguryRewardAd");
-    [self partnerAdLoaded];
-}
-
-- (void)didClickOguryRewardAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"OGURY: didClickOguryRewardAd");
-    [self partnerAdClicked];
-}
-- (void)didCloseOguryRewardAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"OGURY: didCloseOguryRewardAd");
-    [self partnerAdDone];
-}
-
-- (void)didDisplayOguryRewardAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"OGURY: didDisplayOguryRewardAd");
-    [self partnerAdShown];
-}
-
-- (void)didFailOguryRewardAdWithError:(OguryError *)error forAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"OGURY: didFailOguryRewardAdWithError %@", [error localizedDescription]);
-    [self partnerAdLoadFailed:[NSString stringWithFormat:@"%ld", (long)error.code]];
-}
-
-- (void)didTriggerImpressionOguryRewardAd:(OguryOptinVideoAd *)optinVideo {
-    FSTRLog(@"OGURY: didTriggerImpressionOguryRewardAd");
-}
-
-- (UIViewController *)presentingViewControllerForOguryAdsRewardAd:(OguryOptinVideoAd*)optinVideo {
-    return self.presenter;
 }
 
 @end
