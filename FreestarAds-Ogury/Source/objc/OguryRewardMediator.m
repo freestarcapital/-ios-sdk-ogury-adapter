@@ -31,7 +31,6 @@
     FSTRLog(@"OGURY: loadRewardAd");
     [self resetRewardAd];
 
-    FSTRLog(@"OGURY: placement_id %@", self.mPartner.placement_id);
     FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
 
     if ([self.mPartner adunitId] == nil) {
@@ -56,6 +55,17 @@
 }
 
 #pragma mark - OguryOptinVideoAdDelegate
+
+- (void)didRewardOguryOptinVideoAdWithItem:(OGARewardItem *)item forAd:(OguryOptinVideoAd *)optinVideo {
+    // Reward the user here
+    FSTRLog(@"OGURY: didRewardOguryOptinVideoAdWithItem");
+    FSTRLog(@"OGURY: optinVideo: ", optinVideo);
+    FSTRLog(@"OGURY: rewardName: ", item.rewardName);
+    FSTRLog(@"OGURY: rewardValue: ", item.rewardValue);
+
+    [self partnerAdFinished:@[item.rewardName, item.rewardValue]];
+    FSTRLog(@"");
+}
 
 - (void)didLoadOguryRewardAd:(OguryOptinVideoAd *)reward {
     FSTRLog(@"OGURY: didLoadOguryRewardAd");
