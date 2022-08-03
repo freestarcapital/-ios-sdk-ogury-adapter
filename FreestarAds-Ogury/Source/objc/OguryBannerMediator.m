@@ -19,7 +19,6 @@
 @property CGFloat requestedWidth;
 @property(nonatomic, assign) FreestarBannerAdSize freestarAdSize;
 
-
 @end
 
 @implementation OguryBannerMediator
@@ -38,20 +37,30 @@
     return YES;
 }
 
+- (BOOL)canShowInlineInviewAd {
+    return YES;
+}
+
 - (BOOL)isAdaptiveEnabled {
     return [Freestar adaptiveBannerEnabled];
 }
 
-- (NSString*)placementId {
-    return self.mPartner.placement_id;
+-(void)loadBannerAd {
+    [self loadInlineInviewAd];
 }
 
--(void)loadBannerAd {
+- (void)loadInlineInviewAd {
     FSTRLog(@"OGURY: loadBannerAd");
+    FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
 
-    self.ad = [[OguryBannerAd alloc] initWithAdUnitId:[self placementId]];
-    [self.ad loadWithSize:self.requestedSize];
+    if ([self.mPartner adunitId] == nil) {
+        [self partnerAdLoadFailed:@"adunitId is nil"];
+        return;
+    }
+
+    self.ad = [[OguryBannerAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     self.ad.delegate = self;
+    [self.ad loadWithSize:self.requestedSize];
 }
 
 #pragma mark - showing
@@ -59,9 +68,14 @@
 - (void)showAd {
     if (self.ad) {
         FSTRLog(@"OGURY: showAd - placeAdContent");
-        // Place the ad view onto the screen.
+
+        self.ad.frame = [self frameFromSize:self.requestedSize];
         [self.container placeAdContent:self.ad];
     }
+}
+
+- (CGRect)frameFromSize:(OguryAdsBannerSize*)size {
+    return CGRectMake(0, 0, (CGFloat)size.getSize.width, (CGFloat)size.getSize.height);
 }
 
 #pragma mark - OguryBannerAdDelegate
@@ -77,8 +91,10 @@
     FSTRLog(@"OGURY: didClickOguryBannerAd");
     [self partnerAdClicked];
 }
+
 - (void)didCloseOguryBannerAd:(OguryBannerAd *)banner {
     FSTRLog(@"OGURY: didCloseOguryBannerAd");
+    [self partnerAdDone];
 }
 
 - (void)didDisplayOguryBannerAd:(OguryBannerAd *)banner {

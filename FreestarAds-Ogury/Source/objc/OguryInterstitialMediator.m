@@ -27,17 +27,20 @@
     return YES;
 }
 
-- (NSString*)placementId {
-    return self.mPartner.placement_id;
-}
-
 - (void)loadInterstitialAd {
-    FSTRLog(@"OGURY: loadInterstitialAd");
     [self resetInterstitialAd];
 
-    self.ad = [[OguryInterstitialAd alloc] initWithAdUnitId:[self placementId]];
-    [self.ad load];
+    FSTRLog(@"OGURY: loadInterstitialAd");
+    FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
+
+    if ([self.mPartner adunitId] == nil) {
+        [self partnerAdLoadFailed:@"adunitId is nil"];
+        return;
+    }
+
+    self.ad = [[OguryInterstitialAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     self.ad.delegate = self;
+    [self.ad load];
 }
 
 #pragma mark - showing
@@ -64,6 +67,7 @@
 }
 - (void)didCloseOguryInterstitialAd:(OguryInterstitialAd *)interstitial {
     FSTRLog(@"OGURY: didCloseOguryInterstitialAd");
+    [self partnerAdDone];
 }
 
 - (void)didDisplayOguryInterstitialAd:(OguryInterstitialAd *)interstitial {
