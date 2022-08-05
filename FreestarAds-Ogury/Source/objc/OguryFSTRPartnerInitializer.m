@@ -24,11 +24,19 @@
 - (void)runInitialization {
     // run partner initialization here
     FSTRLog(@"OGURY: Partner initialization.");
+    FSTRLog(@"OGURY: app_id: %@", [self.partners.firstObject app_id]);
 
-    OguryConfigurationBuilder *configurationBuilder = [[OguryConfigurationBuilder alloc] initWithAssetKey:@"OGY-374D2BA758F4"];
-    [Ogury startWithConfiguration:[configurationBuilder build]];
+    if (self.partners
+        && self.partners.count > 0
+        && [self.partners.firstObject app_id]) {
 
-    [self.delegate sdkInitialization:self completed:YES];
+        OguryConfigurationBuilder *configurationBuilder = [[OguryConfigurationBuilder alloc] initWithAssetKey:[self.partners.firstObject app_id]];
+        [Ogury startWithConfiguration:[configurationBuilder build]];
+
+        [self.delegate sdkInitialization:self completed:YES];
+    } else {
+        [self.delegate sdkInitialization:self completed:NO];
+    }
 }
 
 @end
