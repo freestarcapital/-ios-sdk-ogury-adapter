@@ -32,6 +32,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		841ED73928A1CE49009A513C /* OguryThumbnailMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 841ED73828A1CE49009A513C /* OguryThumbnailMediator.m */; };
 		8476C6BE287F76720007A8A4 /* OguryInterstitialMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476C6BC287F76720007A8A4 /* OguryInterstitialMediator.m */; };
 		848E92B22888C7910089A8F0 /* OguryRewardMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E92B12888C7910089A8F0 /* OguryRewardMediator.m */; };
 		84CFCE632873AB1A00FFF582 /* OguryBannerMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CFCE622873AB1A00FFF582 /* OguryBannerMediator.m */; };
@@ -70,6 +71,8 @@
 /* Begin PBXFileReference section */
 		251499EDBA4314B8A074D462 /* Pods-FreestarAds-Ogury_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury_Tests.release.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury_Tests/Pods-FreestarAds-Ogury_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		4A4EA400EB242A1285BA79A4 /* Pods-FreestarAds-Ogury.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury.debug.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury/Pods-FreestarAds-Ogury.debug.xcconfig"; sourceTree = "<group>"; };
+		841ED73828A1CE49009A513C /* OguryThumbnailMediator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OguryThumbnailMediator.m; sourceTree = "<group>"; };
+		841ED73A28A1CEDD009A513C /* OguryThumbnailMediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OguryThumbnailMediator.h; sourceTree = "<group>"; };
 		845E6FEB44C0E5A34858812A /* Pods_FreestarAds_Ogury_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreestarAds_Ogury_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8476C6BC287F76720007A8A4 /* OguryInterstitialMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OguryInterstitialMediator.m; sourceTree = "<group>"; };
 		8476C6BD287F76720007A8A4 /* OguryInterstitialMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OguryInterstitialMediator.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				8476C6BC287F76720007A8A4 /* OguryInterstitialMediator.m */,
 				848E92B02888C7910089A8F0 /* OguryRewardMediator.h */,
 				848E92B12888C7910089A8F0 /* OguryRewardMediator.m */,
+				841ED73A28A1CEDD009A513C /* OguryThumbnailMediator.h */,
+				841ED73828A1CE49009A513C /* OguryThumbnailMediator.m */,
 			);
 			path = objc;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				848E92B22888C7910089A8F0 /* OguryRewardMediator.m in Sources */,
 				8476C6BE287F76720007A8A4 /* OguryInterstitialMediator.m in Sources */,
 				FD153C8D286A7B3300B5CF38 /* FreestarAds_Ogury.m in Sources */,
+				841ED73928A1CE49009A513C /* OguryThumbnailMediator.m in Sources */,
 				FD153CA7286B729F00B5CF38 /* OguryFSTRPartnerInitializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
