@@ -13,6 +13,7 @@
 @interface OguryThumbnailMediator()<OguryThumbnailAdDelegate, FSTRMediatorEnabling>
 
 @property (nonatomic, strong) OguryThumbnailAd *ad;
+@property CGSize requestedSize;
 
 @end
 
@@ -21,7 +22,6 @@
 - (BOOL)isEnabledForMediatorFormat:(FSTRMediatorFormatType)type {
     switch (type) {
         case FSTRMediatorFormatTypeThumbnail:
-        //case FSTRMediatorFormatTypeInline:
             return YES;
         default:
             return NO;
@@ -56,11 +56,12 @@
     self.ad = [[OguryThumbnailAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
  //   self.ad.delegate = self;
 //    [self.ad loadWithSize:self.requestedSize];
-    self.ad.OguryThumbnailAdDelegate = self;
-    [self.ad load:CGSizeMake(maxWidth, maxHeight)];
+    self.ad.oguryThumbnailAdDelegate = self;
+    [self.ad load:requestedSize];
 }
 
 - (void)oguryAdsThumbnailAdAdLoaded {
+    //TODO: setup: leftMargin, topMargin
     [self.ad show:CGPointMake(leftMargin, topMargin)];
 }
 
@@ -120,21 +121,17 @@
     return self.presenter;
 }
 
-//#pragma mark - Helper Mediator Functions
-//- (BOOL)supportsBanner:(FreestarBannerAdSize)adSize {
-//    self.freestarAdSize = adSize;
-//    switch(adSize){
-//        case FreestarBanner320x50:
-//            self.requestedSize = [OguryAdsBannerSize small_banner_320x50];
-//            return YES;
-//        case FreestarBanner300x250:
-//            self.requestedSize = [OguryAdsBannerSize mpu_300x250];
-//            return YES;
-//        case FreestarBanner728x90:
-//        default:
-//            return NO;
-//    }
-//}
+#pragma mark - Helper Mediator Functions
+- (BOOL)supportsBanner:(FreestarBannerAdSize)adSize {
+    self.freestarAdSize = adSize;
+    switch(adSize){
+        case FreestarBanner180x180:
+            self.requestedSize = CGSizeMake(180, 180);
+            return YES;
+        default:
+            return NO;
+    }
+}
 
 @end
 
