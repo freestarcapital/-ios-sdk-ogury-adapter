@@ -5,6 +5,7 @@
 //  Created by Carlos Alcala on 8/08/22.
 //
 
+#import "OguryThumbnailMediator.h"
 #import <UIKit/UIKit.h>
 #import <OgurySdk/Ogury.h>
 #import <OguryAds/OguryAds.h>
@@ -14,6 +15,7 @@
 
 @property (nonatomic, strong) OguryThumbnailAd *ad;
 @property CGSize requestedSize;
+//@property(nonatomic, assign) FreestarThumbnailAdSize AdSize;
 
 @end
 
@@ -32,16 +34,8 @@
     return YES;
 }
 
-//- (BOOL)canShowInlineInviewAd {
-//    return YES;
-//}
-
-- (BOOL)isAdaptiveEnabled {
-    return [Freestar adaptiveThumbnailEnabled];
-}
-
 -(void)loadThumbnailAd {
-    [self.thumbnailAd load];
+    [self.ad load];
 }
 
 - (void)loadInlineInviewAd {
@@ -54,15 +48,13 @@
     }
 
     self.ad = [[OguryThumbnailAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
- //   self.ad.delegate = self;
-//    [self.ad loadWithSize:self.requestedSize];
-    self.ad.oguryThumbnailAdDelegate = self;
-    [self.ad load:requestedSize];
+    self.ad.delegate = self;
+    [self.ad load:self.requestedSize];
 }
 
 - (void)oguryAdsThumbnailAdAdLoaded {
     //TODO: setup: leftMargin, topMargin
-    [self.ad show:CGPointMake(leftMargin, topMargin)];
+    [self.ad show:CGPointMake(0, 0)];
 }
 
 #pragma mark - showing
@@ -76,18 +68,13 @@
     }
 }
 
-//- (CGRect)frameFromSize:(OguryAdsBannerSize*)size {
-//    return CGRectMake(0, 0, (CGFloat)size.getSize.width, (CGFloat)size.getSize.height);
-//}
-
 #pragma mark - OguryBannerAdDelegate
 
 - (void)didLoadOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
     FSTRLog(@"OGURY: didLoadOguryThumbnailAd");
 
-    self.ad = banner;
+    self.ad = thumbnail;
     [self partnerAdLoaded];
-    [self.ad show:CGPointMake(leftMargin, topMargin)];
 }
 
 - (void)didClickOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
@@ -123,9 +110,9 @@
 
 #pragma mark - Helper Mediator Functions
 - (BOOL)supportsBanner:(FreestarBannerAdSize)adSize {
-    self.freestarAdSize = adSize;
+    self.ad = adSize;
     switch(adSize){
-        case FreestarBanner180x180:
+        case FreestarThumbnail180x180:
             self.requestedSize = CGSizeMake(180, 180);
             return YES;
         default:
