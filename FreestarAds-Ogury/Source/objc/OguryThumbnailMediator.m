@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) OguryThumbnailAd *ad;
 @property CGSize requestedSize;
-//@property(nonatomic, assign) FreestarThumbnailAdSize AdSize;
+@property(nonatomic, assign) FreestarThumbnailAdSize freestarAdSize;
 
 @end
 
@@ -52,19 +52,18 @@
     [self.ad load:self.requestedSize];
 }
 
-- (void)oguryAdsThumbnailAdAdLoaded {
-    //TODO: setup: leftMargin, topMargin
-    [self.ad show:CGPointMake(0, 0)];
-}
-
 #pragma mark - showing
 
 - (void)showAd {
-    if (self.ad) {
+    if ([self.ad isLoaded]) {
         FSTRLog(@"OGURY: showAd - placeAdContent");
 
-        self.ad.frame = [self frameFromSize:self.requestedSize];
-        [self.container placeAdContent:self.ad];
+
+        CGFloat leftMargin = 0;
+        CGFloat topMargin = 0;
+        [self.ad show:CGPointMake(leftMargin, topMargin)];
+//        [self.ad show];
+//        [self.container placeAdContent:self.ad];
     }
 }
 
@@ -109,8 +108,8 @@
 }
 
 #pragma mark - Helper Mediator Functions
-- (BOOL)supportsBanner:(FreestarBannerAdSize)adSize {
-    self.ad = adSize;
+- (BOOL)supportsThumbnail:(FreestarThumbnailAdSize)adSize {
+    self.freestarAdSize = adSize;
     switch(adSize){
         case FreestarThumbnail180x180:
             self.requestedSize = CGSizeMake(180, 180);

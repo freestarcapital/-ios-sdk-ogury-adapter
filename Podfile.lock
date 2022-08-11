@@ -1,5 +1,5 @@
 PODS:
-  - FreestarAds-PreRelease (5.13.0-beta-4)
+  - FreestarAds-PreRelease (5.14.0-beta-10)
   - OguryAds (3.1.0):
     - OguryAds/OMID (= 3.1.0)
     - OguryCore (= 1.2.0)
@@ -20,24 +20,27 @@ PODS:
     - OguryCore (= 1.2.0)
 
 DEPENDENCIES:
-  - FreestarAds-PreRelease (~> 5.13.0-beta-2)
+  - FreestarAds-PreRelease (from `/Users/charles/Documents/DEVELOPER/WORKSPACE/FREESTAR/ios-core-sdk/FreestarAds-Core/FreestarAds-PreRelease.local.podspec`)
   - OgurySdk (~> 2.1.0)
 
 SPEC REPOS:
   trunk:
-    - FreestarAds-PreRelease
     - OguryAds
     - OguryChoiceManager
     - OguryCore
     - OgurySdk
 
+EXTERNAL SOURCES:
+  FreestarAds-PreRelease:
+    :path: "/Users/charles/Documents/DEVELOPER/WORKSPACE/FREESTAR/ios-core-sdk/FreestarAds-Core/FreestarAds-PreRelease.local.podspec"
+
 SPEC CHECKSUMS:
-  FreestarAds-PreRelease: fcbda922be07f518659107e1045150b40abb3146
+  FreestarAds-PreRelease: 7d579bada8c761b0347c7116c55512c7cb43eec0
   OguryAds: 5ac1f23b2f96da3c5c5bb2a863e60c19c3031700
   OguryChoiceManager: c31d4028ace32f0d7da73c8dd33b53bb942a8491
   OguryCore: 51a06f5bffc34f94d6a8c1ed88e646acbbc59a63
   OgurySdk: 86b949726a3a0cf4f7324158f6928abbffd2599d
 
-PODFILE CHECKSUM: 7ac07f6dca28371ecff9373f361470b06a47ba3b
+PODFILE CHECKSUM: 01630343a8f21bba33214b768c85619903b0a9c5
 
 COCOAPODS: 1.11.3
