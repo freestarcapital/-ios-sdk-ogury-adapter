@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) OguryThumbnailAd *ad;
 @property CGSize requestedSize;
+@property CGPoint startPoint;
 @property(nonatomic, assign) FreestarThumbnailAdSize freestarAdSize;
 
 @end
@@ -35,10 +36,6 @@
 }
 
 -(void)loadThumbnailAd {
-    [self.ad load];
-}
-
-- (void)loadInlineInviewAd {
     FSTRLog(@"OGURY: loadThumbnailAd");
     FSTRLog(@"OGURY: adunitId %@", [self.mPartner adunitId]);
 
@@ -46,6 +43,8 @@
         [self partnerAdLoadFailed:@"adunitId is nil"];
         return;
     }
+
+    self.startPoint = CGPointMake(0, 0);
 
     self.ad = [[OguryThumbnailAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     self.ad.delegate = self;
@@ -55,15 +54,10 @@
 #pragma mark - showing
 
 - (void)showAd {
+    FSTRLog(@"OGURY: showAd");
+
     if ([self.ad isLoaded]) {
-        FSTRLog(@"OGURY: showAd - placeAdContent");
-
-
-        CGFloat leftMargin = 0;
-        CGFloat topMargin = 0;
-        [self.ad show:CGPointMake(leftMargin, topMargin)];
-//        [self.ad show];
-//        [self.container placeAdContent:self.ad];
+        [self.ad show:self.startPoint];
     }
 }
 
