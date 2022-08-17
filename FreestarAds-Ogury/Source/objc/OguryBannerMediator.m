@@ -8,7 +8,6 @@
 #import "OguryBannerMediator.h"
 #import <FreestarAds/FreestarAds.h>
 #import <UIKit/UIKit.h>
-#import <OgurySdk/Ogury.h>
 #import <OguryAds/OguryAds.h>
 #import <OguryChoiceManager/OguryChoiceManager.h>
 

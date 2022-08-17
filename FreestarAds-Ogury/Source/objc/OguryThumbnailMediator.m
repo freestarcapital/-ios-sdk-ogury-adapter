@@ -7,13 +7,12 @@
 
 #import "OguryThumbnailMediator.h"
 #import <UIKit/UIKit.h>
-#import <OgurySdk/Ogury.h>
-#import <OguryAds/OguryAds.h>
 #import <OguryChoiceManager/OguryChoiceManager.h>
+#import <OguryAds/OguryAds.h>
 
-@interface OguryThumbnailMediator()<OguryThumbnailAdDelegate, FSTRMediatorEnabling>
+@interface OguryThumbnailMediator()<OguryAdsThumbnailAdDelegate, FSTRMediatorEnabling>
 
-@property (nonatomic, strong) OguryThumbnailAd *ad;
+@property (nonatomic, strong) OguryAdsThumbnailAd *thumbnail;
 @property CGSize requestedSize;
 @property CGPoint startPoint;
 @property(nonatomic, assign) FreestarThumbnailAdSize freestarAdSize;
@@ -44,11 +43,11 @@
         return;
     }
 
-    self.startPoint = CGPointMake(0, 0);
+    self.startPoint = CGPointMake(100, 500);
+    self.thumbnail = [[OguryAdsThumbnailAd alloc]initWithAdUnitID:[self.mPartner adunitId]];
+    self.thumbnail.thumbnailAdDelegate = self;
 
-    self.ad = [[OguryThumbnailAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
-    self.ad.delegate = self;
-    [self.ad load:self.requestedSize];
+    [self.thumbnail load:self.startPoint];
 }
 
 #pragma mark - showing
@@ -56,49 +55,68 @@
 - (void)showAd {
     FSTRLog(@"OGURY: showAd");
 
-    if ([self.ad isLoaded]) {
-        [self.ad show:self.startPoint];
+    if ([self.thumbnail isLoaded]) {
+        [self.thumbnail show];
     }
 }
 
-#pragma mark - OguryBannerAdDelegate
+#pragma mark - OguryAds Delegate
 
-- (void)didLoadOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
-    FSTRLog(@"OGURY: didLoadOguryThumbnailAd");
+-(void)oguryAdsThumbnailAdAdAvailable {
+    FSTRLog(@"%s", __PRETTY_FUNCTION__);
+}
 
-    self.ad = thumbnail;
+- (void)oguryAdsThumbnailAdAdLoaded {
+    FSTRLog(@"%s", __PRETTY_FUNCTION__);
+
     [self partnerAdLoaded];
 }
 
-- (void)didClickOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
-    FSTRLog(@"OGURY: didClickOguryThumbnailAd");
-    [self partnerAdClicked];
-}
+- (void)oguryAdsThumbnailAdAdClosed {
+    FSTRLog(@"%s", __PRETTY_FUNCTION__);
 
-- (void)didCloseOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
-    FSTRLog(@"OGURY: didCloseOguryThumbnailAd");
     [self partnerAdDone];
 }
 
-- (void)didDisplayOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
-    FSTRLog(@"OGURY: didDisplayOguryThumbnailAd");
+- (void)oguryAdsThumbnailAdAdDisplayed {
+    FSTRLog(@"%s", __PRETTY_FUNCTION__);
 
     [self partnerAdShown];
 }
 
-- (void)didFailOguryThumbnailAdWithError:(OguryError *)error forAd:(OguryThumbnailAd *)thumbnail {
-    FSTRLog(@"OGURY: didFailOguryThumbnailAdWithError %@", [error localizedDescription]);
+- (void)oguryAdsThumbnailAdAdClicked {
+    FSTRLog(@"%s", __PRETTY_FUNCTION__);
 
-   [self partnerAdLoadFailed:[NSString stringWithFormat:@"%ld", (long)error.code]];
+    [self partnerAdClicked];
 }
 
-- (void)didTriggerImpressionOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
-    FSTRLog(@"OGURY: didTriggerImpressionOguryThumbnailAd");
+- (void)oguryAdsThumbnailAdAdNotAvailable {
+    FSTRLog(@"%s", __PRETTY_FUNCTION__);
+    NSString *errorMsg = [NSString stringWithFormat:@"Error : oguryAdsThumbnailAdAdNotAvailable"];
+    FSTRLog(@"OGURY: Error: %@", errorMsg);
+
+    [self partnerAdLoadFailed:errorMsg];
 }
 
-- (UIViewController *)presentingViewControllerForOguryAdsBannerAd:(OguryBannerAd*)banner {
-    FSTRLog(@"OGURY: presentingViewControllerForOguryAdsBannerAd");
-    return self.presenter;
+- (void)oguryAdsThumbnailAdAdError:(OguryAdsErrorType)errorType {
+    FSTRLog(@"%s", __PRETTY_FUNCTION__);
+    NSString *errorMsg = [NSString stringWithFormat:@"Error : %ld", errorType];
+    FSTRLog(@"OGURY: Error: %@", errorMsg);
+
+    [self partnerAdLoadFailed:errorMsg];
+}
+
+-(void)oguryAdsThumbnailAdAdNotLoaded {
+    FSTRLog(@"%s", __PRETTY_FUNCTION__);
+    NSString *errorMsg = [NSString stringWithFormat:@"Error : oguryAdsThumbnailAdAdNotLoaded"];
+    FSTRLog(@"OGURY: Error: %@", errorMsg);
+
+    [self partnerAdLoadFailed:errorMsg];
+}
+
+-(void)oguryAdsThumbnailAdOnAdImpression {
+    FSTRLog(@"%s", __PRETTY_FUNCTION__);
+
 }
 
 #pragma mark - Helper Mediator Functions
