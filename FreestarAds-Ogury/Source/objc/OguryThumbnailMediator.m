@@ -47,7 +47,7 @@
     self.thumbnail = [[OguryAdsThumbnailAd alloc]initWithAdUnitID:[self.mPartner adunitId]];
     self.thumbnail.thumbnailAdDelegate = self;
 
-    [self.thumbnail load:self.startPoint];
+    [self.thumbnail load];
 }
 
 #pragma mark - showing
@@ -56,7 +56,7 @@
     FSTRLog(@"OGURY: showAd");
 
     if ([self.thumbnail isLoaded]) {
-        [self.thumbnail show];
+        [self.thumbnail show:self.startPoint];
     }
 }
 
