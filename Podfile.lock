@@ -1,5 +1,5 @@
 PODS:
-  - FreestarAds-PreRelease (5.14.0-beta-12)
+  - FreestarAds-PreRelease (5.14.0-beta-13)
   - OguryAds (3.1.0):
     - OguryAds/OMID (= 3.1.0)
     - OguryCore (= 1.2.0)
@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
     :path: "/Users/admin/Documents/DEVELOPER/WORKSPACE/FREESTAR/ios-core-sdk/FreestarAds-Core/FreestarAds-PreRelease.local.podspec"
 
 SPEC CHECKSUMS:
-  FreestarAds-PreRelease: e9b8b3b7e7be9d74072065f6395a2930cbba2349
+  FreestarAds-PreRelease: d08d60cbcf7d72e5b37a9c9b877315318a204977
   OguryAds: 5ac1f23b2f96da3c5c5bb2a863e60c19c3031700
   OguryChoiceManager: c31d4028ace32f0d7da73c8dd33b53bb942a8491
   OguryCore: 51a06f5bffc34f94d6a8c1ed88e646acbbc59a63
