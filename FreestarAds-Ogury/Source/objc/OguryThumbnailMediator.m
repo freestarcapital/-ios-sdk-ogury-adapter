@@ -47,6 +47,12 @@
     self.thumbnail = [[OguryAdsThumbnailAd alloc]initWithAdUnitID:[self.mPartner adunitId]];
     self.thumbnail.thumbnailAdDelegate = self;
 
+    FSTRLog(@"OGURY: getWhitelistBundleIdentifiers %@", [Freestar getWhitelistBundleIdentifiers]);
+    FSTRLog(@"OGURY: getBlacklistViewControllers %@", [Freestar getBlacklistViewControllers]);
+
+    [self.thumbnail setWhitelistBundleIdentifiers:[Freestar getWhitelistBundleIdentifiers]];
+    [self.thumbnail setBlacklistViewControllers:[Freestar getBlacklistViewControllers]];
+
     [self.thumbnail load];
 }
 
