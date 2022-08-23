@@ -12,9 +12,10 @@
 
 @interface OguryThumbnailMediator()<OguryThumbnailAdDelegate, FSTRMediatorEnabling>
 
+
 @property (nonatomic, strong) OguryThumbnailAd *thumbnail;
 @property CGSize requestedSize;
-@property CGPoint startPoint;
+@property(nonatomic, assign) FreestarThumbnailAdGravity freestarAdGravity;
 @property(nonatomic, assign) FreestarThumbnailAdSize freestarAdSize;
 
 @end
@@ -43,7 +44,6 @@
         return;
     }
 
-    self.startPoint = CGPointMake(100, 500);
     self.thumbnail = [[OguryThumbnailAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     self.thumbnail.delegate = self;
 
@@ -59,7 +59,16 @@
     FSTRLog(@"OGURY: showAd");
 
     if ([self.thumbnail isLoaded]) {
-        [self.thumbnail show:self.startPoint];
+
+        OguryRectCorner rectCorner = [self getOguryRectCorner:[Freestar getGravity]];
+
+        CGFloat xMargin = [Freestar getXMargin];
+        CGFloat yMargin = [Freestar getYMargin];
+
+        OguryOffset margin = OguryOffsetMake(xMargin, yMargin);
+
+        [self.thumbnail showWithOguryRectCorner:rectCorner
+                                         margin:margin];
     }
 }
 
@@ -106,6 +115,22 @@
             return YES;
         default:
             return NO;
+    }
+}
+
+- (OguryRectCorner)getOguryRectCorner:(FreestarThumbnailAdGravity)gravity {
+    self.freestarAdGravity = gravity;
+    switch(gravity){
+        case TopLeft:
+            return OguryTopLeft;
+        case TopRight:
+            return OguryTopRight;
+        case BottomLeft:
+            return OguryBottomLeft;
+        case BottomRight:
+            return OguryBottomRight;
+        default:
+            return OguryTopLeft;
     }
 }
 
