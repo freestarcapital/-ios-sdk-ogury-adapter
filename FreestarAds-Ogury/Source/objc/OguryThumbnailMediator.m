@@ -10,9 +10,9 @@
 #import <OguryChoiceManager/OguryChoiceManager.h>
 #import <OguryAds/OguryAds.h>
 
-@interface OguryThumbnailMediator()<OguryAdsThumbnailAdDelegate, FSTRMediatorEnabling>
+@interface OguryThumbnailMediator()<OguryThumbnailAdDelegate, FSTRMediatorEnabling>
 
-@property (nonatomic, strong) OguryAdsThumbnailAd *thumbnail;
+@property (nonatomic, strong) OguryThumbnailAd *thumbnail;
 @property CGSize requestedSize;
 @property CGPoint startPoint;
 @property(nonatomic, assign) FreestarThumbnailAdSize freestarAdSize;
@@ -44,11 +44,8 @@
     }
 
     self.startPoint = CGPointMake(100, 500);
-    self.thumbnail = [[OguryAdsThumbnailAd alloc]initWithAdUnitID:[self.mPartner adunitId]];
-    self.thumbnail.thumbnailAdDelegate = self;
-
-    FSTRLog(@"OGURY: getWhitelistBundleIdentifiers %@", [Freestar getWhitelistBundleIdentifiers]);
-    FSTRLog(@"OGURY: getBlacklistViewControllers %@", [Freestar getBlacklistViewControllers]);
+    self.thumbnail = [[OguryThumbnailAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
+    self.thumbnail.delegate = self;
 
     [self.thumbnail setWhitelistBundleIdentifiers:[Freestar getWhitelistBundleIdentifiers]];
     [self.thumbnail setBlacklistViewControllers:[Freestar getBlacklistViewControllers]];
@@ -68,61 +65,36 @@
 
 #pragma mark - OguryAds Delegate
 
--(void)oguryAdsThumbnailAdAdAvailable {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-}
+- (void)didLoadOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
+    FSTRLog(@"OGURY: didLoadOguryThumbnailAd");
 
-- (void)oguryAdsThumbnailAdAdLoaded {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-
+    self.thumbnail = thumbnail;
     [self partnerAdLoaded];
 }
 
-- (void)oguryAdsThumbnailAdAdClosed {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-
-    [self partnerAdDone];
-}
-
-- (void)oguryAdsThumbnailAdAdDisplayed {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-
+- (void)didDisplayOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
+    FSTRLog(@"OGURY: didDisplayOguryBannerAd");
     [self partnerAdShown];
 }
 
-- (void)oguryAdsThumbnailAdAdClicked {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-
+- (void)didClickOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
+    FSTRLog(@"OGURY: didClickOguryThumbnailAd");
     [self partnerAdClicked];
 }
 
-- (void)oguryAdsThumbnailAdAdNotAvailable {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-    NSString *errorMsg = [NSString stringWithFormat:@"Error : oguryAdsThumbnailAdAdNotAvailable"];
-    FSTRLog(@"OGURY: Error: %@", errorMsg);
-
-    [self partnerAdLoadFailed:errorMsg];
+- (void)didCloseOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
+    FSTRLog(@"OGURY: didCloseOguryThumbnailAd");
+    [self partnerAdDone];
 }
 
-- (void)oguryAdsThumbnailAdAdError:(OguryAdsErrorType)errorType {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-    NSString *errorMsg = [NSString stringWithFormat:@"Error : %ld", errorType];
-    FSTRLog(@"OGURY: Error: %@", errorMsg);
+- (void)didFailOguryThumbnailAdWithError:(OguryError *)error forAd:(OguryThumbnailAd *)thumbnail {
+    FSTRLog(@"OGURY: didFailOguryThumbnailAdWithError %@", [error localizedDescription]);
 
-    [self partnerAdLoadFailed:errorMsg];
+   [self partnerAdLoadFailed:[NSString stringWithFormat:@"%ld", (long)error.code]];
 }
 
--(void)oguryAdsThumbnailAdAdNotLoaded {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-    NSString *errorMsg = [NSString stringWithFormat:@"Error : oguryAdsThumbnailAdAdNotLoaded"];
-    FSTRLog(@"OGURY: Error: %@", errorMsg);
-
-    [self partnerAdLoadFailed:errorMsg];
-}
-
--(void)oguryAdsThumbnailAdOnAdImpression {
-    FSTRLog(@"%s", __PRETTY_FUNCTION__);
-
+- (void)didTriggerImpressionOguryThumbnailAd:(OguryThumbnailAd *)thumbnail {
+    FSTRLog(@"OGURY: didTriggerImpressionOguryThumbnailAd");
 }
 
 #pragma mark - Helper Mediator Functions
@@ -138,4 +110,3 @@
 }
 
 @end
-

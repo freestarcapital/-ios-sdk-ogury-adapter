@@ -8,6 +8,7 @@
 #import "OguryFSTRPartnerInitializer.h"
 #import <OguryAds/OguryAds.h>
 #import <OguryChoiceManager/OguryChoiceManager.h>
+#import <OgurySdk/Ogury.h>
 
 @implementation OguryFSTRPartnerInitializer
 
@@ -29,8 +30,8 @@
         && self.partners.count > 0
         && [self.partners.firstObject app_id]) {
 
-        [OguryChoiceManager.sharedManager setupWithAssetKey:[self.partners.firstObject app_id]];
-        [OguryAds.shared setupWithAssetKey:[self.partners.firstObject app_id]];
+        OguryConfigurationBuilder *configurationBuilder = [[OguryConfigurationBuilder alloc] initWithAssetKey:[self.partners.firstObject app_id]];
+        [Ogury startWithConfiguration:[configurationBuilder build]];
 
         [self.delegate sdkInitialization:self completed:YES];
     } else {
