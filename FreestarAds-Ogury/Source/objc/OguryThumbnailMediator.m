@@ -47,8 +47,8 @@
     self.thumbnail = [[OguryThumbnailAd alloc] initWithAdUnitId:[self.mPartner adunitId]];
     self.thumbnail.delegate = self;
 
-    [self.thumbnail setWhitelistBundleIdentifiers:[Freestar getWhitelistBundleIdentifiers]];
-    [self.thumbnail setBlacklistViewControllers:[Freestar getBlacklistViewControllers]];
+    [self.thumbnail setWhitelistBundleIdentifiers:[FreestarThumbnailAd getWhitelistBundleIdentifiers]];
+    [self.thumbnail setBlacklistViewControllers:[FreestarThumbnailAd getBlacklistViewControllers]];
 
     [self.thumbnail load];
 }
@@ -60,10 +60,10 @@
 
     if ([self.thumbnail isLoaded]) {
 
-        OguryRectCorner rectCorner = [self getOguryRectCorner:[Freestar getGravity]];
+        OguryRectCorner rectCorner = [self getOguryRectCorner:[FreestarThumbnailAd getGravity]];
 
-        CGFloat xMargin = [Freestar getXMargin];
-        CGFloat yMargin = [Freestar getYMargin];
+        CGFloat xMargin = [FreestarThumbnailAd getXMargin];
+        CGFloat yMargin = [FreestarThumbnailAd getYMargin];
 
         OguryOffset margin = OguryOffsetMake(xMargin, yMargin);
 
