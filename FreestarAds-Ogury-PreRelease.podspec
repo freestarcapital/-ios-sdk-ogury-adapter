@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
 
   spec.source              = {
       :git => "https://gitlab.com/freestar/ios-binaries.git",
-      :tag => "Ogury-PreRelease-2.1.0.3-beta-3"
+      :tag => "Ogury-PreRelease-2.1.0.3-beta-4"
   }
 
   spec.pod_target_xcconfig = {
