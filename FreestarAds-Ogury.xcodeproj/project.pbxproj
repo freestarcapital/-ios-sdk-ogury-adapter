@@ -32,12 +32,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		045EE92E7F6E9E6176263A19 /* Pods_FreestarAds_Ogury_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFD67F955A83CFBD4A6D75C /* Pods_FreestarAds_Ogury_Tests.framework */; };
+		3007312A9B77998B38C23085 /* Pods_FreestarAds_Ogury_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C15AEF15E79AE8D5E2C3673 /* Pods_FreestarAds_Ogury_Tests.framework */; };
 		841ED73928A1CE49009A513C /* OguryThumbnailMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 841ED73828A1CE49009A513C /* OguryThumbnailMediator.m */; };
 		8476C6BE287F76720007A8A4 /* OguryInterstitialMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476C6BC287F76720007A8A4 /* OguryInterstitialMediator.m */; };
 		848E92B22888C7910089A8F0 /* OguryRewardMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E92B12888C7910089A8F0 /* OguryRewardMediator.m */; };
 		84CFCE632873AB1A00FFF582 /* OguryBannerMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CFCE622873AB1A00FFF582 /* OguryBannerMediator.m */; };
-		9DFB8F61CDF679FA698A26A0 /* Pods_FreestarAds_Ogury.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9420A2D24FC30561895636 /* Pods_FreestarAds_Ogury.framework */; };
+		EB83B99666765F51FFEB7082 /* Pods_FreestarAds_Ogury.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66934D835E48C192ED20C743 /* Pods_FreestarAds_Ogury.framework */; };
 		FD153C8D286A7B3300B5CF38 /* FreestarAds_Ogury.m in Sources */ = {isa = PBXBuildFile; fileRef = FD153C8C286A7B3300B5CF38 /* FreestarAds_Ogury.m */; };
 		FD153C8E286A7B3300B5CF38 /* FreestarAds_Ogury.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD153C8B286A7B3300B5CF38 /* FreestarAds_Ogury.h */; };
 		FD153C9B286A7D1E00B5CF38 /* FreestarAds_Ogury_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD153C9A286A7D1E00B5CF38 /* FreestarAds_Ogury_Tests.m */; };
@@ -69,10 +69,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		223B3FB86ED0117D415F1C9F /* Pods-FreestarAds-Ogury.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury.debug.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury/Pods-FreestarAds-Ogury.debug.xcconfig"; sourceTree = "<group>"; };
-		2354AC19C41E9859ED4CF145 /* Pods-FreestarAds-Ogury_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury_Tests.release.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury_Tests/Pods-FreestarAds-Ogury_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		26F20AF036A07941AC4451AB /* Pods-FreestarAds-Ogury.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury.release.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury/Pods-FreestarAds-Ogury.release.xcconfig"; sourceTree = "<group>"; };
-		368B7D6766DD693C7141A8F6 /* Pods-FreestarAds-Ogury_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury_Tests.debug.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury_Tests/Pods-FreestarAds-Ogury_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		13B49DBD0A7E8B33505F736C /* Pods-FreestarAds-Ogury.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury.debug.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury/Pods-FreestarAds-Ogury.debug.xcconfig"; sourceTree = "<group>"; };
+		599B224EAAC2E681E9D8F886 /* Pods-FreestarAds-Ogury.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury.release.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury/Pods-FreestarAds-Ogury.release.xcconfig"; sourceTree = "<group>"; };
+		5C15AEF15E79AE8D5E2C3673 /* Pods_FreestarAds_Ogury_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreestarAds_Ogury_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66934D835E48C192ED20C743 /* Pods_FreestarAds_Ogury.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreestarAds_Ogury.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841ED73828A1CE49009A513C /* OguryThumbnailMediator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OguryThumbnailMediator.m; sourceTree = "<group>"; };
 		841ED73A28A1CEDD009A513C /* OguryThumbnailMediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OguryThumbnailMediator.h; sourceTree = "<group>"; };
 		8476C6BC287F76720007A8A4 /* OguryInterstitialMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OguryInterstitialMediator.m; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 		848E92B12888C7910089A8F0 /* OguryRewardMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OguryRewardMediator.m; sourceTree = "<group>"; };
 		84CFCE612873AB1A00FFF582 /* OguryBannerMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OguryBannerMediator.h; sourceTree = "<group>"; };
 		84CFCE622873AB1A00FFF582 /* OguryBannerMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OguryBannerMediator.m; sourceTree = "<group>"; };
-		CDFD67F955A83CFBD4A6D75C /* Pods_FreestarAds_Ogury_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreestarAds_Ogury_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE9420A2D24FC30561895636 /* Pods_FreestarAds_Ogury.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreestarAds_Ogury.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8504148DF6476402859608B4 /* Pods-FreestarAds-Ogury_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury_Tests.release.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury_Tests/Pods-FreestarAds-Ogury_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		D7C6F5EE6920124FAF775E27 /* Pods-FreestarAds-Ogury_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreestarAds-Ogury_Tests.debug.xcconfig"; path = "Target Support Files/Pods-FreestarAds-Ogury_Tests/Pods-FreestarAds-Ogury_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD153C88286A7B3300B5CF38 /* libFreestarAds-Ogury.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFreestarAds-Ogury.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD153C8B286A7B3300B5CF38 /* FreestarAds_Ogury.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreestarAds_Ogury.h; sourceTree = "<group>"; };
 		FD153C8C286A7B3300B5CF38 /* FreestarAds_Ogury.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreestarAds_Ogury.m; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DFB8F61CDF679FA698A26A0 /* Pods_FreestarAds_Ogury.framework in Frameworks */,
+				EB83B99666765F51FFEB7082 /* Pods_FreestarAds_Ogury.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,31 +106,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD153C9C286A7D1E00B5CF38 /* libFreestarAds-Ogury.a in Frameworks */,
-				045EE92E7F6E9E6176263A19 /* Pods_FreestarAds_Ogury_Tests.framework in Frameworks */,
+				3007312A9B77998B38C23085 /* Pods_FreestarAds_Ogury_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		150304DC7DB958D0B7090784 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66934D835E48C192ED20C743 /* Pods_FreestarAds_Ogury.framework */,
+				5C15AEF15E79AE8D5E2C3673 /* Pods_FreestarAds_Ogury_Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		85181CF6CE904CC9DA49B424 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				223B3FB86ED0117D415F1C9F /* Pods-FreestarAds-Ogury.debug.xcconfig */,
-				26F20AF036A07941AC4451AB /* Pods-FreestarAds-Ogury.release.xcconfig */,
-				368B7D6766DD693C7141A8F6 /* Pods-FreestarAds-Ogury_Tests.debug.xcconfig */,
-				2354AC19C41E9859ED4CF145 /* Pods-FreestarAds-Ogury_Tests.release.xcconfig */,
+				13B49DBD0A7E8B33505F736C /* Pods-FreestarAds-Ogury.debug.xcconfig */,
+				599B224EAAC2E681E9D8F886 /* Pods-FreestarAds-Ogury.release.xcconfig */,
+				D7C6F5EE6920124FAF775E27 /* Pods-FreestarAds-Ogury_Tests.debug.xcconfig */,
+				8504148DF6476402859608B4 /* Pods-FreestarAds-Ogury_Tests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		B928B5C8DC9C2CE2806D1DDE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DE9420A2D24FC30561895636 /* Pods_FreestarAds_Ogury.framework */,
-				CDFD67F955A83CFBD4A6D75C /* Pods_FreestarAds_Ogury_Tests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FD153C7F286A7B3300B5CF38 = {
@@ -140,7 +140,7 @@
 				FD153C99286A7D1E00B5CF38 /* FreestarAds-Ogury_Tests */,
 				FD153C89286A7B3300B5CF38 /* Products */,
 				85181CF6CE904CC9DA49B424 /* Pods */,
-				B928B5C8DC9C2CE2806D1DDE /* Frameworks */,
+				150304DC7DB958D0B7090784 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,7 +211,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD153C91286A7B3300B5CF38 /* Build configuration list for PBXNativeTarget "FreestarAds-Ogury" */;
 			buildPhases = (
-				E6CD30712B2DA4363618181A /* [CP] Check Pods Manifest.lock */,
+				E3F26A57DF14719E2AB369D1 /* [CP] Check Pods Manifest.lock */,
 				FD153C84286A7B3300B5CF38 /* Sources */,
 				FD153C85286A7B3300B5CF38 /* Frameworks */,
 				FD153C86286A7B3300B5CF38 /* CopyFiles */,
@@ -229,7 +229,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD153CA1286A7D1E00B5CF38 /* Build configuration list for PBXNativeTarget "FreestarAds-Ogury_Tests" */;
 			buildPhases = (
-				91E543DB3BA6E6598809F67A /* [CP] Check Pods Manifest.lock */,
+				0D597E32BDFA6F455F4E7703 /* [CP] Check Pods Manifest.lock */,
 				FD153C94286A7D1E00B5CF38 /* Sources */,
 				FD153C95286A7D1E00B5CF38 /* Frameworks */,
 				FD153C96286A7D1E00B5CF38 /* Resources */,
@@ -296,24 +296,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		56A8B6CD289DA1F3006E7372 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "WORKSPACE_NAME=\"${PROJECT}.xcworkspace\"\nSCHEME_NAME=\"${PROJECT}\"\nFRAMEWORK_NAME=\"${PROJECT}\"\nSIMULATOR_ARCHIVE_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FRAMEWORK_NAME}-iphonesimulator.xcarchive\"\nDEVICE_ARCHIVE_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FRAMEWORK_NAME}-iphoneos.xcarchive\"\nOUTPUT_FOLDER=\"./build/\"\n\n# Simulator xcarchive\nxcodebuild archive \\\n  -workspace ${WORKSPACE_NAME} \\\n  -scheme ${SCHEME_NAME} \\\n  -archivePath ${SIMULATOR_ARCHIVE_PATH} \\\n  -sdk iphonesimulator \\\n  -configuration Release \\\n  SKIP_INSTALL=NO | xcpretty\n  \n# Device xcarchive\nxcodebuild archive \\\n  -workspace ${WORKSPACE_NAME} \\\n  -scheme ${SCHEME_NAME} \\\n  -archivePath ${DEVICE_ARCHIVE_PATH} \\\n  -sdk iphoneos \\\n  -configuration Release \\\n  SKIP_INSTALL=NO | xcpretty\n  \n# Clean up old output directory\nrm -rf \"${OUTPUT_FOLDER}\"\n\nxcodebuild -create-xcframework \\\n  -library ${DEVICE_ARCHIVE_PATH}/Products/usr/local/lib/lib${FRAMEWORK_NAME}.a \\\n  -library ${SIMULATOR_ARCHIVE_PATH}/Products/usr/local/lib/lib${FRAMEWORK_NAME}.a \\\n  -output ${OUTPUT_FOLDER}/${FRAMEWORK_NAME}.xcframework\n   \nopen ${OUTPUT_FOLDER}\n\n";
-		};
-		91E543DB3BA6E6598809F67A /* [CP] Check Pods Manifest.lock */ = {
+		0D597E32BDFA6F455F4E7703 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -335,7 +318,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E6CD30712B2DA4363618181A /* [CP] Check Pods Manifest.lock */ = {
+		56A8B6CD289DA1F3006E7372 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "WORKSPACE_NAME=\"${PROJECT}.xcworkspace\"\nSCHEME_NAME=\"${PROJECT}\"\nFRAMEWORK_NAME=\"${PROJECT}\"\nSIMULATOR_ARCHIVE_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FRAMEWORK_NAME}-iphonesimulator.xcarchive\"\nDEVICE_ARCHIVE_PATH=\"${BUILD_DIR}/${CONFIGURATION}/${FRAMEWORK_NAME}-iphoneos.xcarchive\"\nOUTPUT_FOLDER=\"./build/\"\n\n# Simulator xcarchive\nxcodebuild archive \\\n  -workspace ${WORKSPACE_NAME} \\\n  -scheme ${SCHEME_NAME} \\\n  -archivePath ${SIMULATOR_ARCHIVE_PATH} \\\n  -sdk iphonesimulator \\\n  -configuration Release \\\n  SKIP_INSTALL=NO | xcpretty\n  \n# Device xcarchive\nxcodebuild archive \\\n  -workspace ${WORKSPACE_NAME} \\\n  -scheme ${SCHEME_NAME} \\\n  -archivePath ${DEVICE_ARCHIVE_PATH} \\\n  -sdk iphoneos \\\n  -configuration Release \\\n  SKIP_INSTALL=NO | xcpretty\n  \n# Clean up old output directory\nrm -rf \"${OUTPUT_FOLDER}\"\n\nxcodebuild -create-xcframework \\\n  -library ${DEVICE_ARCHIVE_PATH}/Products/usr/local/lib/lib${FRAMEWORK_NAME}.a \\\n  -library ${SIMULATOR_ARCHIVE_PATH}/Products/usr/local/lib/lib${FRAMEWORK_NAME}.a \\\n  -output ${OUTPUT_FOLDER}/${FRAMEWORK_NAME}.xcframework\n   \nopen ${OUTPUT_FOLDER}\n\n";
+		};
+		E3F26A57DF14719E2AB369D1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -539,7 +539,7 @@
 		};
 		FD153C92286A7B3300B5CF38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 223B3FB86ED0117D415F1C9F /* Pods-FreestarAds-Ogury.debug.xcconfig */;
+			baseConfigurationReference = 13B49DBD0A7E8B33505F736C /* Pods-FreestarAds-Ogury.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -557,7 +557,7 @@
 		};
 		FD153C93286A7B3300B5CF38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26F20AF036A07941AC4451AB /* Pods-FreestarAds-Ogury.release.xcconfig */;
+			baseConfigurationReference = 599B224EAAC2E681E9D8F886 /* Pods-FreestarAds-Ogury.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -575,7 +575,7 @@
 		};
 		FD153C9F286A7D1E00B5CF38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 368B7D6766DD693C7141A8F6 /* Pods-FreestarAds-Ogury_Tests.debug.xcconfig */;
+			baseConfigurationReference = D7C6F5EE6920124FAF775E27 /* Pods-FreestarAds-Ogury_Tests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -591,7 +591,7 @@
 		};
 		FD153CA0286A7D1E00B5CF38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2354AC19C41E9859ED4CF145 /* Pods-FreestarAds-Ogury_Tests.release.xcconfig */;
+			baseConfigurationReference = 8504148DF6476402859608B4 /* Pods-FreestarAds-Ogury_Tests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
