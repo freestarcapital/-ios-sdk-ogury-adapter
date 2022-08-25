@@ -6,9 +6,9 @@
 //
 
 #import "OguryFSTRPartnerInitializer.h"
-#import <OgurySdk/Ogury.h>
 #import <OguryAds/OguryAds.h>
 #import <OguryChoiceManager/OguryChoiceManager.h>
+#import <OgurySdk/Ogury.h>
 
 @implementation OguryFSTRPartnerInitializer
 

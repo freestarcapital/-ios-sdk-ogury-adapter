@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                = "FreestarAds-Ogury-PreRelease"
-  spec.version             = "2.1.0.1-beta-9"
+  spec.version             = "2.1.0.3-beta-4"
   spec.author              = 'Freestar'
   spec.license             =  { :type => 'Apache2.0', :file => 'LICENSE' }
   spec.homepage            = 'http://www.freestar.com'
@@ -10,6 +10,8 @@ Pod::Spec.new do |spec|
   spec.vendored_frameworks  = 'build/FreestarAds-Ogury.xcframework'
   spec.dependency "FreestarAds-PreRelease", "~> 5.12-beta"
   spec.dependency 'OgurySdk', '~> 2.1.0'
+  spec.dependency 'OguryChoiceManager'
+  spec.dependency 'OguryAds'
 
   spec.source = { :git => '' }
 
