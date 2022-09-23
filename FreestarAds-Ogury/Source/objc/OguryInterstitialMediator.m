@@ -6,10 +6,9 @@
 //
 
 #import "OguryInterstitialMediator.h"
-#import <OgurySdk/Ogury.h>
-#import <OguryAds/OguryAds.h>
 #import <UIKit/UIKit.h>
 #import <OguryChoiceManager/OguryChoiceManager.h>
+#import <OguryAds/OguryAds.h>
 
 @interface OguryInterstitialMediator()<OguryInterstitialAdDelegate, FSTRMediatorEnabling>
 
