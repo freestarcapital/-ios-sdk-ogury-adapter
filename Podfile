@@ -1,4 +1,4 @@
-source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://github.com/CocoaPods/Specs.git'
 source 'https://cdn.cocoapods.org/'
 use_frameworks!
 
@@ -8,8 +8,8 @@ POD = 'FreestarAds-Ogury'
 POD_TEST = POD + '_Tests'
 
 target POD do
-  pod 'FreestarAds-PreRelease', '~> 5.15.0-beta-5'
-  pod 'OgurySdk', '~> 2.1.0'
+  pod 'FreestarAds-PreRelease', '~> 5.18-beta'
+  pod 'OgurySdk', '2.1.0'
   pod 'OguryAds'
   pod 'OguryChoiceManager'
  

@@ -1,5 +1,5 @@
 PODS:
-  - FreestarAds-PreRelease (5.15.0-beta-5)
+  - FreestarAds-PreRelease (5.18.0-beta-4)
   - OguryAds (3.1.0):
     - OguryAds/OMID (= 3.1.0)
     - OguryCore (= 1.2.0)
@@ -20,10 +20,10 @@ PODS:
     - OguryCore (= 1.2.0)
 
 DEPENDENCIES:
-  - FreestarAds-PreRelease (~> 5.15.0-beta-5)
+  - FreestarAds-PreRelease (~> 5.18-beta)
   - OguryAds
   - OguryChoiceManager
-  - OgurySdk (~> 2.1.0)
+  - OgurySdk (= 2.1.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -35,12 +35,12 @@ SPEC REPOS:
     - OgurySdk
 
 SPEC CHECKSUMS:
-  FreestarAds-PreRelease: efd556302def1b58ba296eea786735075ce673b9
+  FreestarAds-PreRelease: 8e0fee629d298acf6be3904472f656a5317b656f
   OguryAds: 5ac1f23b2f96da3c5c5bb2a863e60c19c3031700
   OguryChoiceManager: c31d4028ace32f0d7da73c8dd33b53bb942a8491
   OguryCore: 51a06f5bffc34f94d6a8c1ed88e646acbbc59a63
   OgurySdk: 86b949726a3a0cf4f7324158f6928abbffd2599d
 
-PODFILE CHECKSUM: 0997651e1486ed07d389a241523cc2e5721ec305
+PODFILE CHECKSUM: f84a7e0089952e8c225af27947acda3f14171070
 
 COCOAPODS: 1.11.3
